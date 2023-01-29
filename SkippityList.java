@@ -1,6 +1,6 @@
 // Johnathon Bulman
 
-// SkipList.java
+// SkippityList.java
 // =============
 // Skip list data structure that holds generics.
 
@@ -103,7 +103,7 @@ class Node<T>
 //    in the skip list (excluding the head node).
 //  * A skip list with exactly one element has a height of 1.
 //  * A skip list with zero elements has a height of 1 (head node initial height).
-public class SkipList<AnyType extends Comparable<AnyType>>
+public class SkippityList<AnyType extends Comparable<AnyType>>
 {
   private Node<AnyType> head; // Head node.
   private int size;           // Size of skip list.
