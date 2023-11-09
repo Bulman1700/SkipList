@@ -64,29 +64,15 @@ class Node<T>
   }
 
   // Grow this node by exactly one level.
-  public void grow()
+  public boolean grow()
   {
-    this.h.add(null);
+    return this.h.add(null);
   }
 
   // Grow this node by exactly one level with probability 50%.
   public boolean maybeGrow()
   {
-    if (coinToss())
-    {
-      grow();
-      return true;
-    }
-    return false;
-  }
-
-  // Fun coin toss method :)
-  private boolean coinToss()
-  {
-    Random rand = new Random();
-    boolean heads = true, tails = false;
-    
-    return (rand.nextInt(2) == 1) ? heads : tails;
+    return (new Random().nextInt(2)) == 1 ? grow() : false;
   }
 
   // Trim this node's height to a given level.
@@ -174,7 +160,7 @@ public class SkippityList<AnyType extends Comparable<AnyType>>
 
     // Check if skip list needs to grow.
     if (height() < getMaxHeight(++this.size))
-      growSkipList();
+      growSkippityList();
 
   }
 
@@ -212,7 +198,7 @@ public class SkippityList<AnyType extends Comparable<AnyType>>
 
      // Trim the skip list if necessary.
      if (height() > getMaxHeight(--this.size))
-       trimSkipList();
+       trimSkippityList();
   }
 
   // Returns a reference to the first occurence of 'data'.
@@ -287,7 +273,7 @@ public class SkippityList<AnyType extends Comparable<AnyType>>
     return null;
   }
 
-  // Returns the calculated height of a skiplist with 'n' nodes.
+  // Returns the calculated height of a Skip list with 'n' nodes.
   private static int getMaxHeight(int n)
   {
     if (n <= 2)
@@ -309,7 +295,7 @@ public class SkippityList<AnyType extends Comparable<AnyType>>
     return height;
   }
 
-  private void growSkipList()
+  private void growSkippityList()
   {
     int maxLevel = head().maxLevel();
     Node<AnyType> curr = head(), next = head().next(maxLevel);
@@ -329,19 +315,19 @@ public class SkippityList<AnyType extends Comparable<AnyType>>
     }
   }
 
-  // Trims the skiplist.
-  private void trimSkipList()
+  // Trims the skip list.
+  private void trimSkippityList()
   {
-    trimSkipListHelper(head(), getMaxHeight(size()));
+    trimSkippityListHelper(head(), getMaxHeight(size()));
   }
 
 
-  private void trimSkipListHelper(Node<AnyType> node, int level)
+  private void trimSkippityListHelper(Node<AnyType> node, int level)
   {
     if (node == null)
       return;
 
-    trimSkipListHelper(node.next(level), level);
+    trimSkippityListHelper(node.next(level), level);
     node.trim(level);
   }
 }
