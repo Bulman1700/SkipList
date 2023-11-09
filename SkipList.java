@@ -72,12 +72,7 @@ class Node<T>
   // Grow this node by exactly one level with probability 50%.
   public boolean maybeGrow()
   {
-    Random rand = new Random();
-
-    if (rand.nextInt(2) == 1)
-        return grow();
-    
-    return false;
+    return (new Random().nextInt(2)) == 1 ? grow() : false;
   }
 
   // Trim this node's height to a given level.
