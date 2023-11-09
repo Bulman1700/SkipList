@@ -2,7 +2,16 @@
 
 This is my implementation of a generic probablistic skip list data structure (SkippityList), written in java. 
 
-Supports: insert(), delete(), contains(), get(), size(), and height() methods.
+Supports: 
+
+    SkippityList()
+    SkippityList(int height)
+
+    int size()
+    int height()
+    void insert(AnyType data)
+    void delete(AnyType data)
+    boolean contains(AnyType data)
 
 An empty SkippityList has a height of 1 (the head node).
 
