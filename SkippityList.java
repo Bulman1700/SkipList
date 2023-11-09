@@ -97,7 +97,7 @@ class Node<T>
   }
 }
 
-// SkipList Class
+// SkippityList Class
 // Notes:
 //  * Expected height of the skip list is the ceiling of log2(n), where n is the number of elements
 //    in the skip list (excluding the head node).
@@ -109,13 +109,13 @@ public class SkippityList<AnyType extends Comparable<AnyType>>
   private int size;           // Size of skip list.
 
   // initializes a skip list with a height of 1.
-  SkipList()
+  SkippityList()
   {
     this(1);
   }
 
   // initializes a skip list with a height of 'height'.
-  SkipList(int height)
+  SkippityList(int height)
   {
     this.head = new Node<>(height);
   }
