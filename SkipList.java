@@ -64,29 +64,20 @@ class Node<T>
   }
 
   // Grow this node by exactly one level.
-  public void grow()
+  public boolean grow()
   {
-    this.h.add(null);
+    return this.h.add(null);
   }
 
   // Grow this node by exactly one level with probability 50%.
   public boolean maybeGrow()
   {
-    if (coinToss())
-    {
-      grow();
-      return true;
-    }
-    return false;
-  }
-
-  // Fun coin toss method :)
-  private boolean coinToss()
-  {
     Random rand = new Random();
-    boolean heads = true, tails = false;
+
+    if (rand.nextInt(2) == 1)
+        return grow();
     
-    return (rand.nextInt(2) == 1) ? heads : tails;
+    return false;
   }
 
   // Trim this node's height to a given level.
